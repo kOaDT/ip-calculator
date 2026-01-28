@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPv4 to Binary Converter</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>IPv4 <span class="accent">→</span> Binary</h1>
+      <p class="subtitle">Type an IPv4 address to see its binary breakdown</p>
+    </header>
+
+    <section class="input-section" aria-label="IPv4 address input">
+      <div class="ip-input-group" role="group" aria-label="IPv4 address octets">
+        <label for="octet-0" class="sr-only">First octet</label>
+        <input id="octet-0" class="octet-input" type="text" inputmode="numeric" maxlength="3" placeholder="192" aria-label="First octet" data-index="0">
+        <span class="dot" aria-hidden="true">.</span>
+        <label for="octet-1" class="sr-only">Second octet</label>
+        <input id="octet-1" class="octet-input" type="text" inputmode="numeric" maxlength="3" placeholder="168" aria-label="Second octet" data-index="1">
+        <span class="dot" aria-hidden="true">.</span>
+        <label for="octet-2" class="sr-only">Third octet</label>
+        <input id="octet-2" class="octet-input" type="text" inputmode="numeric" maxlength="3" placeholder="1" aria-label="Third octet" data-index="2">
+        <span class="dot" aria-hidden="true">.</span>
+        <label for="octet-3" class="sr-only">Fourth octet</label>
+        <input id="octet-3" class="octet-input" type="text" inputmode="numeric" maxlength="3" placeholder="1" aria-label="Fourth octet" data-index="3">
+      </div>
+    </section>
+
+    <section class="result-section" aria-label="Binary conversion result">
+      <div class="binary-output" id="binary-output" aria-live="polite"></div>
+    </section>
+
+    <section class="table-section" aria-label="Binary conversion table">
+      <table class="bit-table" aria-label="IPv4 binary conversion">
+        <thead>
+          <tr class="power-row">
+            <th></th>
+            <th>2<sup>7</sup></th>
+            <th>2<sup>6</sup></th>
+            <th>2<sup>5</sup></th>
+            <th>2<sup>4</sup></th>
+            <th>2<sup>3</sup></th>
+            <th>2<sup>2</sup></th>
+            <th>2<sup>1</sup></th>
+            <th>2<sup>0</sup></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>128</th>
+            <th>64</th>
+            <th>32</th>
+            <th>16</th>
+            <th>8</th>
+            <th>4</th>
+            <th>2</th>
+            <th>1</th>
+            <th class="col-result">Binary</th>
+          </tr>
+        </thead>
+        <tbody id="bit-table-body"></tbody>
+      </table>
+    </section>
+
+    <section class="steps-section" id="steps-section" aria-label="Step-by-step explanation"></section>
+  </main>
+
+  <script src="app.js"></script>
+  <script data-goatcounter="https://ipcalculator.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

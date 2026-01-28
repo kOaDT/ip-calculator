@@ -1,0 +1,395 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --border: #2a2e3d;
+  --text: #e4e6ef;
+  --text-muted: #7a7f94;
+  --accent: #6c8cff;
+  --bit-on: #6c8cff;
+  --bit-off: #3a3e50;
+  --radius: 6px;
+  --font-mono: "SF Mono", "Fira Code", "JetBrains Mono", "Cascadia Code", monospace;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+main {
+  width: 100%;
+  max-width: 720px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Header */
+
+header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+h1 {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* Input */
+
+.input-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.ip-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  transition: border-color 0.2s;
+}
+
+.ip-input-group:focus-within {
+  border-color: var(--accent);
+}
+
+.octet-input {
+  width: 3.5rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0.35rem 0;
+}
+
+.octet-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
+.octet-input.invalid {
+  color: #ff6b6b;
+}
+
+.dot {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+/* Binary output */
+
+.binary-output {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  color: var(--accent);
+  min-height: 1.6em;
+  letter-spacing: 0.04em;
+  margin-bottom: 2.5rem;
+  transition: opacity 0.3s;
+}
+
+.binary-output:empty {
+  opacity: 0;
+}
+
+.binary-output .binary-separator {
+  color: var(--text-muted);
+  margin: 0 0.15em;
+}
+
+/* Unified bit table */
+
+.table-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
+}
+
+.bit-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bit-table th,
+.bit-table td {
+  text-align: center;
+  padding: 0.45rem 0;
+  font-family: var(--font-mono);
+}
+
+.bit-table thead th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  padding-bottom: 0.3rem;
+}
+
+.bit-table .power-row th {
+  font-size: 0.6rem;
+  font-weight: 400;
+  opacity: 0.6;
+  padding-bottom: 0.15rem;
+}
+
+.bit-table .col-result {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.bit-table tbody tr {
+  border-top: 1px solid var(--border);
+}
+
+.bit-table tbody td {
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.bit-table td.bit-on {
+  color: var(--bit-on);
+}
+
+.bit-table td.bit-off {
+  color: var(--bit-off);
+}
+
+.bit-table .row-label {
+  text-align: left;
+  font-weight: 400;
+  white-space: nowrap;
+  padding-right: 0.75rem;
+}
+
+.row-label-ordinal {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.row-label-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-left: 0.15rem;
+}
+
+.bit-table .row-result {
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  padding-left: 0.5rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Step-by-step details */
+
+.steps-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.steps-heading {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.octet-details {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0 1rem;
+  transition: border-color 0.2s;
+}
+
+.octet-details:hover {
+  border-color: var(--accent);
+}
+
+.octet-details[open] {
+  padding-bottom: 1rem;
+  border-color: var(--accent);
+}
+
+.octet-details summary {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.75rem 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.octet-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.octet-details summary strong {
+  color: var(--text);
+}
+
+.summary-chevron {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.octet-details[open] .summary-chevron {
+  transform: rotate(90deg);
+}
+
+.summary-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-left: auto;
+  font-family: var(--font-sans);
+}
+
+.octet-details[open] .summary-hint {
+  display: none;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-top: 0.25rem;
+}
+
+.step {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.step-value {
+  color: var(--text);
+}
+
+.step-bit {
+  font-weight: 700;
+}
+
+.step-bit.on {
+  color: var(--bit-on);
+}
+
+.step-bit.off {
+  color: var(--bit-off);
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+  body {
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .octet-input {
+    width: 2.8rem;
+    font-size: 1.2rem;
+  }
+
+  .dot {
+    font-size: 1.2rem;
+  }
+
+  .table-section {
+    padding: 0.75rem;
+  }
+
+  .bit-table thead th {
+    font-size: 0.6rem;
+  }
+
+  .bit-table tbody td {
+    font-size: 0.9rem;
+  }
+
+  .row-label-value {
+    font-size: 0.9rem;
+  }
+
+  .bit-table .row-result {
+    font-size: 0.7rem;
+  }
+
+  .binary-output {
+    font-size: 0.95rem;
+  }
+}
